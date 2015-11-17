@@ -59,6 +59,17 @@ vector<S2CellId> *OUTPUT {
 %template(S2PointVector) std::vector<S2Point>;
 //%template(S2LoopVector) std::vector<S2Loop>;
 
+template <typename VType>
+class Vector3 {
+  public:
+    Vector3();
+    ~Vector3();
+    Vector3(const VType x, const VType y, const VType z);
+};
+%template(DoubleVector3) Vector3<double>;
+
+typedef Vector3<double> S2Point;
+
 #endif
 
 %include "r1interval.h"
