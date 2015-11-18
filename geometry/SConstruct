@@ -1,10 +1,13 @@
 #!python
 import SCons.Tool.textfile
 
+vars = Variables()
+vars.Add('prefix', 'Set install directory prefix', '/usr')
+
 env = Environment(
    CPPFLAGS=['-Wall', '-Wwrite-strings', '-Woverloaded-virtual', '-Wno-sign-compare', '-DS2_USE_EXACTFLOAT', '-DHASH_NAMESPACE=std', '-std=c++11'],
    CPPPATH=['.', 's2'],
-   prefix='/usr',
+   variables=vars,
 )
 
 SCons.Tool.textfile.generate(env)
